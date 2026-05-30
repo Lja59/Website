@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O'Pays des Merveilles — Des Mains en Or</title>
+  <meta name="description" content="Créations artisanales faites main avec amour. Découvrez des pièces uniques, nées de mains en or." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="logo.jpg" alt="O'Pays des Merveilles" />
+      <div class="nav-logo-text">O'Pays des<br>Merveilles</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="boutique.html">Boutique</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li>
+        <a href="boutique.html" class="nav-cta">
+          Panier <span class="cart-count" style="display:none; background:var(--orange-terre); color:white; border-radius:50%; width:18px; height:18px; font-size:0.7rem; align-items:center; justify-content:center; margin-left:4px;">0</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="hero-eyebrow">✦ Artisanat fait main</span>
+        <h1 class="hero-title">
+          Des créations<br>
+          <em>uniques</em>,<br>
+          nées de mains en or
+        </h1>
+        <p class="hero-description">
+          Chaque pièce est façonnée avec soin, patience et passion. 
+          Ici, l'ordinaire n'a pas sa place — bienvenue dans un pays de merveilles.
+        </p>
+        <div class="hero-actions">
+          <a href="boutique.html" class="btn btn-primary">Découvrir la boutique →</a>
+          <a href="about.html" class="btn btn-outline">Mon histoire</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Fait main</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">Unique</span>
+            <span class="stat-label">Chaque pièce</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">🌿</span>
+            <span class="stat-label">Matériaux naturels</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card-float">
+          <div class="hero-img-wrap">
+            <img src="logo.jpg" alt="O'Pays des Merveilles" class="hero-logo-big" />
+          </div>
+          <div class="hero-badge">
+            <span>Des Mains</span>
+            <strong>en Or ✦</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Défiler</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- MANIFESTE / VALEURS -->
+  <section class="valeurs">
+    <div class="valeurs-inner">
+      <div class="valeur-card reveal">
+        <div class="valeur-icon">🌱</div>
+        <h3>Naturel</h3>
+        <p>Des matériaux choisis avec soin, proches de la nature et durables.</p>
+      </div>
+      <div class="valeur-card reveal">
+        <div class="valeur-icon">✋</div>
+        <h3>Artisanal</h3>
+        <p>Chaque création passe entre mes mains, du début à la fin. Aucune machine ne peut remplacer ça.</p>
+      </div>
+      <div class="valeur-card reveal">
+        <div class="valeur-icon">💛</div>
+        <h3>Avec amour</h3>
+        <p>Ce que vous recevez, c'est un bout de moi — fait avec passion et intention.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SÉLECTION COUP DE CŒUR -->
+  <section class="featured">
+    <div class="featured-inner">
+      <div class="featured-header reveal">
+        <span class="section-eyebrow">Coup de cœur</span>
+        <h2 class="section-title">Pièces phares</h2>
+        <p class="section-subtitle">Un aperçu de ce qui vous attend dans la boutique — des trésors à s'offrir ou à offrir.</p>
+      </div>
+
+      <div class="featured-grid">
+        <div class="product-card featured-card reveal" data-id="1" data-name="Création #1" data-price="28">
+          <div class="product-img-wrap">
+            <div class="product-img-placeholder">
+              <span>🌿</span>
+              <p>Votre photo<br>ici</p>
+            </div>
+            <div class="product-overlay">
+              <button class="btn btn-orange" onclick="addToCart({id:'1', name:'Création #1', price:28})">Ajouter au panier</button>
+            </div>
+            <span class="product-badge">Nouveauté</span>
+          </div>
+          <div class="product-info">
+            <span class="tag">Déco</span>
+            <h3>Création Signature #1</h3>
+            <div class="product-price">28 €</div>
+          </div>
+        </div>
+
+        <div class="product-card featured-card reveal" data-id="2" data-name="Création #2" data-price="35">
+          <div class="product-img-wrap">
+            <div class="product-img-placeholder">
+              <span>🌸</span>
+              <p>Votre photo<br>ici</p>
+            </div>
+            <div class="product-overlay">
+              <button class="btn btn-orange" onclick="addToCart({id:'2', name:'Création #2', price:35})">Ajouter au panier</button>
+            </div>
+            <span class="product-badge badge-orange">Coup de ♥</span>
+          </div>
+          <div class="product-info">
+            <span class="tag tag-orange">Bijou</span>
+            <h3>Création Signature #2</h3>
+            <div class="product-price">35 €</div>
+          </div>
+        </div>
+
+        <div class="product-card featured-card reveal" data-id="3" data-name="Création #3" data-price="22">
+          <div class="product-img-wrap">
+            <div class="product-img-placeholder">
+              <span>🍂</span>
+              <p>Votre photo<br>ici</p>
+            </div>
+            <div class="product-overlay">
+              <button class="btn btn-orange" onclick="addToCart({id:'3', name:'Création #3', price:22})">Ajouter au panier</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="tag">Textile</span>
+            <h3>Création Signature #3</h3>
+            <div class="product-price">22 €</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="featured-cta reveal">
+        <a href="boutique.html" class="btn btn-primary">Voir toute la collection →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDE TEXTE DÉFILANT -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>Fait main avec amour ✦</span>
+      <span>Des Mains en Or ✦</span>
+      <span>Pièces uniques ✦</span>
+      <span>Artisanat français ✦</span>
+      <span>Fait main avec amour ✦</span>
+      <span>Des Mains en Or ✦</span>
+      <span>Pièces uniques ✦</span>
+      <span>Artisanat français ✦</span>
+    </div>
+  </div>
+
+  <!-- SECTION HISTOIRE / PORTRAIT -->
+  <section class="portrait">
+    <div class="portrait-inner">
+      <div class="portrait-visual reveal">
+        <div class="portrait-img-wrap">
+          <div class="portrait-img-placeholder">
+            <span>📸</span>
+            <p>Votre photo</p>
+          </div>
+          <div class="portrait-deco-circle"></div>
+        </div>
+        <blockquote class="portrait-quote">
+          "Chaque point, chaque nœud,<br>chaque couleur — c'est ma façon<br>de mettre du beau dans le monde."
+        </blockquote>
+      </div>
+
+      <div class="portrait-text reveal">
+        <span class="section-eyebrow">Mon histoire</span>
+        <h2 class="section-title">Bienvenue dans<br>mon univers</h2>
+        <p>Passionnée depuis toujours par le travail des mains, j'ai fondé O'Pays des Merveilles pour partager mes créations avec le monde. Chaque pièce est imaginée, créée et finie par mes soins.</p>
+        <p style="margin-top:1rem;">Ici, pas de production en masse. Juste des créations sincères, avec du caractère et de l'âme.</p>
+        <a href="about.html" class="btn btn-outline" style="margin-top:2rem;">En savoir plus →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="newsletter-inner reveal">
+      <span class="section-eyebrow">Restez connecté·e</span>
+      <h2 class="section-title" style="color:white;">Rejoignez la communauté</h2>
+      <p style="color:rgba(255,255,255,0.75); margin: 1rem 0 2rem;">Nouveautés, coulisses et offres exclusives — directement dans votre boîte mail.</p>
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <input type="email" placeholder="votre@email.fr" required />
+        <button type="submit" class="btn btn-orange">Je m'inscris ✦</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.jpg" alt="O'Pays des Merveilles" />
+        <div class="nav-logo-text" style="color:var(--vert-menthe); margin-bottom:0.8rem; font-size:1.1rem;">O'Pays des Merveilles</div>
+        <p>Des créations artisanales faites main, avec passion et authenticité. Chaque pièce est unique, comme vous.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="boutique.html">Boutique</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Infos</h4>
+        <ul>
+          <li><a href="#">Livraison</a></li>
+          <li><a href="#">Retours</a></li>
+          <li><a href="#">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 O'Pays des Merveilles — Des Mains en Or</span>
+      <span>Fait avec ❤️ en France</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    function handleNewsletter(e) {
+      e.preventDefault();
+      showToast('Merci ! Vous êtes maintenant inscrit·e 🌿');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

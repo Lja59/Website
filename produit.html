@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Produit — O'Pays des Merveilles</title>
+  <meta name="description" content="Détail d'une création artisanale faite main d'O'Pays des Merveilles." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="produit.css" />
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="logo.jpg" alt="O'Pays des Merveilles" />
+      <div class="nav-logo-text">O'Pays des<br>Merveilles</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="boutique.html">Boutique</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li>
+        <a href="boutique.html" class="nav-cta" id="nav-cart-btn">
+          Panier
+          <span class="cart-count" style="display:none; background:var(--orange-terre); color:white; border-radius:50%; width:18px; height:18px; font-size:0.7rem; align-items:center; justify-content:center; margin-left:4px;">0</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Accueil</a>
+      <span></span>
+      <a href="boutique.html">Boutique</a>
+      <span></span>
+      <span id="breadcrumb-name">Chargement…</span>
+    </div>
+  </div>
+
+  <!-- PRODUIT PRINCIPAL -->
+  <section class="product-detail">
+    <div class="product-detail-inner">
+
+      <!-- GALERIE -->
+      <div class="gallery">
+        <div class="gallery-thumbnails" id="gallery-thumbs"></div>
+        <div class="gallery-main">
+          <div class="gallery-main-img" id="gallery-main">
+            <div class="gallery-placeholder" id="gallery-placeholder">
+              <span id="gallery-icon">🌿</span>
+            </div>
+            <img id="gallery-img" src="" alt="" style="display:none;" />
+          </div>
+          <button class="gallery-arrow gallery-prev" onclick="galleryNav(-1)">‹</button>
+          <button class="gallery-arrow gallery-next" onclick="galleryNav(+1)">›</button>
+          <div class="gallery-dots" id="gallery-dots"></div>
+        </div>
+      </div>
+
+      <!-- INFOS PRODUIT -->
+      <div class="product-info-panel">
+
+        <div class="product-tags-row" id="product-tags-row"></div>
+
+        <h1 class="product-name" id="product-name">Chargement…</h1>
+
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-text">Fait main avec amour</span>
+        </div>
+
+        <div class="product-price-row">
+          <span class="product-price-big" id="product-price">—</span>
+          <span class="product-price-note">Prix unique · pièce artisanale</span>
+        </div>
+
+        <p class="product-description" id="product-description">—</p>
+
+        <!-- VARIANTES COULEUR -->
+        <div class="variant-section" id="color-section" style="display:none;">
+          <div class="variant-label">
+            Couleur : <strong id="selected-color-label">—</strong>
+          </div>
+          <div class="variant-swatches" id="color-swatches"></div>
+        </div>
+
+        <!-- VARIANTES TAILLE -->
+        <div class="variant-section" id="size-section" style="display:none;">
+          <div class="variant-label">
+            Taille / Dimension : <strong id="selected-size-label">—</strong>
+          </div>
+          <div class="variant-sizes" id="size-options"></div>
+        </div>
+
+        <!-- QUANTITÉ + AJOUT -->
+        <div class="add-to-cart-row">
+          <div class="qty-selector">
+            <button onclick="changeQtyDisplay(-1)">−</button>
+            <span id="qty-display">1</span>
+            <button onclick="changeQtyDisplay(+1)">+</button>
+          </div>
+          <button class="btn btn-orange add-main-btn" id="add-cart-btn" onclick="addCurrentToCart()">
+            Ajouter au panier
+          </button>
+        </div>
+
+        <p class="product-stock-note" id="stock-note"></p>
+
+        <!-- POINTS CLÉS -->
+        <div class="product-highlights" id="product-highlights"></div>
+
+        <!-- INFOS LIVRAISON -->
+        <div class="shipping-info">
+          <div class="shipping-item">
+            <span>📦</span>
+            <div>
+              <strong>Expédition sous 2–3 jours</strong>
+              <p>Emballage artisanal soigné avec petit mot personnalisé</p>
+            </div>
+          </div>
+          <div class="shipping-item">
+            <span>🚚</span>
+            <div>
+              <strong>Livraison gratuite dès 50 €</strong>
+              <p>France, Belgique, Suisse, Luxembourg</p>
+            </div>
+          </div>
+          <div class="shipping-item">
+            <span>✉️</span>
+            <div>
+              <strong>Commande sur mesure</strong>
+              <p>Une idée ? <a href="about.html#contact">Contactez-moi</a></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DESCRIPTION LONGUE / ONGLETS -->
+  <section class="product-tabs">
+    <div class="product-tabs-inner">
+      <div class="tabs-nav">
+        <button class="tab-btn active" onclick="switchTab('details', this)">Détails</button>
+        <button class="tab-btn" onclick="switchTab('materiaux', this)">Matériaux</button>
+        <button class="tab-btn" onclick="switchTab('entretien', this)">Entretien</button>
+      </div>
+      <div class="tabs-content">
+        <div class="tab-panel active" id="tab-details">
+          <p id="tab-details-text">—</p>
+        </div>
+        <div class="tab-panel" id="tab-materiaux">
+          <p id="tab-materiaux-text">—</p>
+        </div>
+        <div class="tab-panel" id="tab-entretien">
+          <p id="tab-entretien-text">—</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUITS SIMILAIRES -->
+  <section class="related-products">
+    <div class="related-inner">
+      <span class="section-eyebrow">Vous aimerez aussi</span>
+      <h2 class="section-title">Dans la même collection</h2>
+      <div class="related-grid" id="related-grid"></div>
+    </div>
+  </section>
+
+  <!-- PANIER LATÉRAL (même que boutique) -->
+  <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+  <aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h2>🛒 Mon panier</h2>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer" id="cart-footer" style="display:none;">
+      <div class="cart-total">
+        <span>Total estimé</span>
+        <strong id="cart-total-price">0 €</strong>
+      </div>
+      <button class="btn btn-orange" style="width:100%; justify-content:center;" onclick="sendOrderByMail()">
+        ✉️ Envoyer ma demande de commande
+      </button>
+      <p class="cart-note">Vous serez redirigé·e vers votre messagerie avec le détail de votre commande déjà rédigé.</p>
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.jpg" alt="O'Pays des Merveilles" />
+        <div class="nav-logo-text" style="color:var(--vert-menthe); margin-bottom:0.8rem; font-size:1.1rem;">O'Pays des Merveilles</div>
+        <p>Des créations artisanales faites main, avec passion et authenticité. Chaque pièce est unique, comme vous.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="boutique.html">Boutique</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Infos</h4>
+        <ul>
+          <li><a href="#">Livraison</a></li>
+          <li><a href="#">Retours</a></li>
+          <li><a href="#">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 O'Pays des Merveilles — Des Mains en Or</span>
+      <span>Fait avec ❤️ en France</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="produit.js"></script>
+</body>
+</html>

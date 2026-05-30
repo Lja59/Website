@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique — O'Pays des Merveilles</title>
+  <meta name="description" content="Découvrez toutes les créations artisanales faites main d'O'Pays des Merveilles. Pièces uniques à s'offrir ou à offrir." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="boutique.css" />
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="logo.jpg" alt="O'Pays des Merveilles" />
+      <div class="nav-logo-text">O'Pays des<br>Merveilles</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="boutique.html" class="active">Boutique</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li>
+        <a href="#panier" class="nav-cta" onclick="toggleCart(event)">
+          Panier
+          <span class="cart-count" style="display:none; background:var(--orange-terre); color:white; border-radius:50%; width:18px; height:18px; font-size:0.7rem; align-items:center; justify-content:center; margin-left:4px;">0</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- HERO BOUTIQUE -->
+  <header class="shop-hero">
+    <div class="shop-hero-inner">
+      <span class="section-eyebrow">Toutes mes créations</span>
+      <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 4rem);">La Boutique</h1>
+      <p class="section-subtitle">Chaque pièce est unique et faite à la main. Prenez le temps de les découvrir.</p>
+    </div>
+    <div class="shop-hero-deco">
+      <div class="deco-leaf deco-leaf-1">🌿</div>
+      <div class="deco-leaf deco-leaf-2">🌸</div>
+      <div class="deco-leaf deco-leaf-3">🍃</div>
+    </div>
+  </header>
+
+  <!-- FILTRES -->
+  <section class="filters-section">
+    <div class="filters-inner">
+      <div class="filters-row">
+        <div class="filter-chips">
+          <button class="chip active" onclick="filterProducts('tous', this)">Tout voir</button>
+          <button class="chip" onclick="filterProducts('deco', this)">🌿 Déco</button>
+          <button class="chip" onclick="filterProducts('bijou', this)">✨ Bijoux</button>
+          <button class="chip" onclick="filterProducts('textile', this)">🧵 Textile</button>
+          <button class="chip" onclick="filterProducts('cadeau', this)">🎁 Idées cadeaux</button>
+        </div>
+        <div class="filter-sort">
+          <select onchange="sortProducts(this.value)">
+            <option value="default">Trier par</option>
+            <option value="prix-asc">Prix croissant</option>
+            <option value="prix-desc">Prix décroissant</option>
+            <option value="nouveautes">Nouveautés</option>
+          </select>
+        </div>
+      </div>
+      <div class="results-count">
+        <span id="count">8</span> créations
+      </div>
+    </div>
+  </section>
+
+  <!-- GRILLE PRODUITS -->
+  <section class="shop-grid-section">
+    <div class="shop-grid" id="products-grid">
+
+      <!-- Produit 1 -->
+      <article class="product-card shop-card reveal" data-category="deco" data-price="28" data-id="p1">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" style="background: linear-gradient(135deg, #d4edda, #a8d5b5);">
+            <span>🌿</span>
+            <p>Votre photo ici</p>
+          </div>
+          <div class="product-overlay">
+            <button class="btn btn-orange" onclick="addToCart({id:'p1', name:'Couronne végétale', price:28})">Ajouter au panier</button>
+          </div>
+          <button class="wishlist-btn" title="Coup de cœur">♡</button>
+          <span class="product-badge">Nouveauté</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="tag">Déco</span>
+            <span class="product-stock in-stock">En stock</span>
+          </div>
+          <h3>Couronne végétale</h3>
+          <p class="product-desc">Délicate couronne réalisée à partir de matériaux naturels séchés.</p>
+          <div class="product-footer">
+            <div class="product-price">28 €</div>
+            <button class="add-btn" onclick="addToCart({id:'p1', name:'Couronne végétale', price:28})">+</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produit 2 -->
+      <article class="product-card shop-card reveal" data-category="bijou" data-price="35" data-id="p2">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" style="background: linear-gradient(135deg, #fde8d8, #f5a673);">
+            <span>✨</span>
+            <p>Votre photo ici</p>
+          </div>
+          <div class="product-overlay">
+            <button class="btn btn-orange" onclick="addToCart({id:'p2', name:'Collier macramé', price:35})">Ajouter au panier</button>
+          </div>
+          <button class="wishlist-btn">♡</button>
+          <span class="product-badge badge-orange">Coup de ♥</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="tag tag-orange">Bijou</span>
+            <span class="product-stock in-stock">En stock</span>
+          </div>
+          <h3>Collier macramé</h3>
+          <p class="product-desc">Collier artisanal en cordon de coton naturel, nœuds faits à la main.</p>
+          <div class="product-footer">
+            <div class="product-price">35 €</div>
+            <button class="add-btn" onclick="addToCart({id:'p2', name:'Collier macramé', price:35})">+</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produit 3 -->
+      <article class="product-card shop-card reveal" data-category="textile" data-price="22" data-id="p3">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9);">
+            <span>🧵</span>
+            <p>Votre photo ici</p>
+          </div>
+          <div class="product-overlay">
+            <button class="btn btn-orange" onclick="addToCart({id:'p3', name:'Tote bag brodé', price:22})">Ajouter au panier</button>
+          </div>
+          <button class="wishlist-btn">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="tag">Textile</span>
+            <span class="product-stock in-stock">En stock</span>
+          </div>
+          <h3>Tote bag brodé</h3>
+          <p class="product-desc">Sac en coton naturel avec broderie florale faite à la main.</p>
+          <div class="product-footer">
+            <div class="product-price">22 €</div>
+            <button class="add-btn" onclick="addToCart({id:'p3', name:'Tote bag brodé', price:22})">+</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produit 4 -->
+      <article class="product-card shop-card reveal" data-category="deco" data-price="45" data-id="p4">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" style="background: linear-gradient(135deg, #f3e5f5, #e1bee7);">
+            <span>🕯️</span>
+            <p>Votre photo ici</p>
+          </div>
+          <div class="product-overlay">
+            <button class="btn btn-orange" onclick="addToCart({id:'p4', name:'Bougie artisanale', price:45})">Ajouter au panier</button>
+          </div>
+          <button class="wishlist-btn">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="tag">Déco</span>
+            <span class="product-stock in-stock">En stock</span>
+          </div>
+          <h3>Bougie artisanale</h3>
+          <p class="product-desc">Bougie coulée à la main en cire végétale, parfumée aux fleurs.</p>
+          <div class="product-footer">
+            <div class="product-price">45 €</div>
+            <button class="add-btn" onclick="addToCart({id:'p4', name:'Bougie artisanale', price:45})">+</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produit 5 -->
+      <article class="product-card shop-card reveal" data-category="bijou" data-price="18" data-id="p5">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" style="background: linear-gradient(135deg, #fff9c4, #ffe082);">
+            <span>💛</span>
+            <p>Votre photo ici</p>
+          </div>
+          <div class="product-overlay">
+            <button class="btn btn-orange" onclick="addToCart({id:'p5', name:'Boucles d\'oreilles', price:18})">Ajouter au panier</button>
+          </div>
+          <button class="wishlist-btn">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="tag tag-orange">Bijou</span>
+            <span class="product-stock">Derniers</span>
+          </div>
+          <h3>Boucles d'oreilles</h3>
+          <p class="product-desc">Boucles légères en argile polymère, peintes à la main.</p>
+          <div class="product-footer">
+            <div class="product-price">18 €</div>
+            <button class="add-btn" onclick="addToCart({id:'p5', name:'Boucles d\'oreilles', price:18})">+</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produit 6 -->
+      <article class="product-card shop-card reveal" data-category="cadeau" data-price="55" data-id="p6">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" style="background: linear-gradient(135deg, #e8f5e9, #ffecb3);">
+            <span>🎁</span>
+            <p>Votre photo ici</p>
+          </div>
+          <div class="product-overlay">
+            <button class="btn btn-orange" onclick="addToCart({id:'p6', name:'Coffret cadeau', price:55})">Ajouter au panier</button>
+          </div>
+          <button class="wishlist-btn">♡</button>
+          <span class="product-badge">Best-seller</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="tag">Cadeau</span>
+            <span class="product-stock in-stock">En stock</span>
+          </div>
+          <h3>Coffret cadeau</h3>
+          <p class="product-desc">Un assortiment de créations choisies avec soin, idéal pour offrir.</p>
+          <div class="product-footer">
+            <div class="product-price">55 €</div>
+            <button class="add-btn" onclick="addToCart({id:'p6', name:'Coffret cadeau', price:55})">+</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produit 7 -->
+      <article class="product-card shop-card reveal" data-category="textile" data-price="38" data-id="p7">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" style="background: linear-gradient(135deg, #fce4ec, #f48fb1);">
+            <span>🌸</span>
+            <p>Votre photo ici</p>
+          </div>
+          <div class="product-overlay">
+            <button class="btn btn-orange" onclick="addToCart({id:'p7', name:'Pochette brodée', price:38})">Ajouter au panier</button>
+          </div>
+          <button class="wishlist-btn">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="tag">Textile</span>
+            <span class="product-stock in-stock">En stock</span>
+          </div>
+          <h3>Pochette brodée</h3>
+          <p class="product-desc">Petite pochette en lin avec motifs floraux brodés au point de croix.</p>
+          <div class="product-footer">
+            <div class="product-price">38 €</div>
+            <button class="add-btn" onclick="addToCart({id:'p7', name:'Pochette brodée', price:38})">+</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produit 8 -->
+      <article class="product-card shop-card reveal" data-category="deco" data-price="32" data-id="p8">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" style="background: linear-gradient(135deg, #e0f2f1, #80cbc4);">
+            <span>🍂</span>
+            <p>Votre photo ici</p>
+          </div>
+          <div class="product-overlay">
+            <button class="btn btn-orange" onclick="addToCart({id:'p8', name:'Suspension murale', price:32})">Ajouter au panier</button>
+          </div>
+          <button class="wishlist-btn">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="tag">Déco</span>
+            <span class="product-stock in-stock">En stock</span>
+          </div>
+          <h3>Suspension murale</h3>
+          <p class="product-desc">Décoration en macramé tressé à la main avec baguette en bois flotté.</p>
+          <div class="product-footer">
+            <div class="product-price">32 €</div>
+            <button class="add-btn" onclick="addToCart({id:'p8', name:'Suspension murale', price:32})">+</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- PANIER LATÉRAL -->
+  <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+  <aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h2>🛒 Mon panier</h2>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer" id="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cart-total-price">0 €</strong>
+      </div>
+      <button class="btn btn-orange" style="width:100%; justify-content:center;" onclick="checkout()">
+        Commander →
+      </button>
+      <p class="cart-note">🚚 Livraison gratuite dès 50 €</p>
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.jpg" alt="O'Pays des Merveilles" />
+        <div class="nav-logo-text" style="color:var(--vert-menthe); margin-bottom:0.8rem; font-size:1.1rem;">O'Pays des Merveilles</div>
+        <p>Des créations artisanales faites main, avec passion et authenticité. Chaque pièce est unique, comme vous.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="boutique.html">Boutique</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Infos</h4>
+        <ul>
+          <li><a href="#">Livraison</a></li>
+          <li><a href="#">Retours</a></li>
+          <li><a href="#">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 O'Pays des Merveilles — Des Mains en Or</span>
+      <span>Fait avec ❤️ en France</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="boutique.js"></script>
+</body>
+</html>
