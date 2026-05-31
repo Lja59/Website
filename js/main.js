@@ -15,35 +15,50 @@ function escHtml(str) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // === CURSOR PERSONNALISÉ ===
   const cursor   = document.querySelector('.cursor');
   const follower = document.querySelector('.cursor-follower');
 
-  if (cursor && follower) {
+  const isTouchDevice =
+    window.matchMedia("(pointer: coarse)").matches ||
+    'ontouchstart' in window;
+
+  if (isTouchDevice) {
+    cursor?.remove();
+    follower?.remove();
+  }
+  else if (cursor && follower) {
     let mouseX = 0, mouseY = 0;
     let fX = 0, fY = 0;
 
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      cursor.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%,-50%)`;
+
+      cursor.style.transform =
+        `translate(${mouseX}px, ${mouseY}px) translate(-50%,-50%)`;
     });
 
     (function animateFollower() {
       fX += (mouseX - fX) * 0.1;
       fY += (mouseY - fY) * 0.1;
-      follower.style.transform = `translate(${fX}px, ${fY}px) translate(-50%,-50%)`;
+
+      follower.style.transform =
+        `translate(${fX}px, ${fY}px) translate(-50%,-50%)`;
+
       requestAnimationFrame(animateFollower);
     })();
 
-    document.querySelectorAll('a, button, .product-card, .shop-card, .related-card').forEach(el => {
+    document.querySelectorAll(
+      'a, button, .product-card, .shop-card, .related-card'
+    ).forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursor.style.background = 'var(--vert-moyen)';
-        follower.style.opacity  = '0.2';
+        follower.style.opacity = '0.2';
       });
+
       el.addEventListener('mouseleave', () => {
         cursor.style.background = 'var(--orange-terre)';
-        follower.style.opacity  = '0.6';
+        follower.style.opacity = '0.6';
       });
     });
   }
