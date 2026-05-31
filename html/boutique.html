@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique — O'Pays des Merveilles</title>
+  <meta name="description" content="Découvrez toutes les créations artisanales faites main d'O'Pays des Merveilles. Pièces uniques à s'offrir ou à offrir." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/boutique.css" />
+  <link rel="icon" href="../image/identity/logo.jpg" type="image/jpeg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Boutique — O'Pays des Merveilles" />
+  <meta property="og:description" content="Découvrez toutes les créations artisanales faites main. Pièces uniques à s'offrir ou à offrir." />
+  <meta property="og:url" content="https://opaysdesmerveilles.fr/html/boutique.html" />
+  <meta property="og:image" content="../image/identity/logo.jpg" />
+  <link rel="stylesheet" href="../css/cart-count.css" />
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="../image/identity/logo.jpg" alt="O'Pays des Merveilles" />
+      <div class="nav-logo-text">O'Pays des<br>Merveilles</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="boutique.html" class="active">Boutique</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li>
+        <a href="#panier" class="nav-cta" onclick="toggleCart(event)">
+          Panier
+          <span class="cart-count">0</span>
+        </a>
+      </li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- HERO BOUTIQUE -->
+  <header class="shop-hero">
+    <div class="shop-hero-inner">
+      <span class="section-eyebrow">Toutes mes créations</span>
+      <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 4rem);">La Boutique</h1>
+      <p class="section-subtitle">Chaque pièce est unique et faite à la main. Prenez le temps de les découvrir.</p>
+    </div>
+    <div class="shop-hero-deco">
+      <div class="deco-leaf deco-leaf-1">🌿</div>
+      <div class="deco-leaf deco-leaf-2">🌸</div>
+      <div class="deco-leaf deco-leaf-3">🍃</div>
+    </div>
+  </header>
+
+  <!-- FILTRES -->
+  <section class="filters-section">
+    <div class="filters-inner">
+      <div class="filters-row">
+        <div class="filter-chips">
+          <button class="chip active" onclick="filterProducts('tous', this)">Tout voir</button>
+          <button class="chip" onclick="filterProducts('fleurs', this)">Fleurs</button>
+        </div>
+        <div class="filter-sort">
+          <select onchange="sortProducts(this.value)">
+            <option value="default">Trier par</option>
+            <option value="prix-asc">Prix croissant</option>
+            <option value="prix-desc">Prix décroissant</option>
+          </select>
+        </div>
+      </div>
+      <div class="results-count">
+        <span id="count">—</span> créations
+      </div>
+    </div>
+  </section>
+
+  <!-- GRILLE PRODUITS (générée par boutique.js) -->
+  <section class="shop-grid-section">
+    <div class="shop-grid" id="products-grid">
+      <!-- Les cartes sont injectées par boutique.js -->
+    </div>
+  </section>
+
+  <!-- PANIER LATÉRAL -->
+  <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+  <aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h2>🛒 Mon panier</h2>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer" id="cart-footer" style="display:none;">
+      <div class="cart-total">
+        <span>Total estimé</span>
+        <strong id="cart-total-price">0 €</strong>
+      </div>
+      <button class="btn btn-orange" style="width:100%; justify-content:center;" onclick="sendOrderByMail()">
+        ✉️ Envoyer ma demande de commande
+      </button>
+      <p class="cart-note">Vous serez redirigé·e vers votre messagerie avec le détail de votre commande déjà rédigé.</p>
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../image/identity/logo.jpg" alt="O'Pays des Merveilles" />
+        <div class="nav-logo-text" style="color:var(--vert-menthe); margin-bottom:0.8rem; font-size:1.1rem;">O'Pays des Merveilles</div>
+        <p>Des créations artisanales faites main, avec passion et authenticité. Chaque pièce est unique, comme vous.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="boutique.html">Boutique</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Infos</h4>
+        <ul>
+          <li><a href="#">Livraison</a></li>
+          <li><a href="#">Retours</a></li>
+          <li><a href="#">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 O'Pays des Merveilles — Des Mains en Or</span>
+      <span>Fait avec ❤️ en France</span>
+    </div>
+  </footer>
+
+  <!-- scripts : products.js en premier, puis main.js, puis boutique.js -->
+  <script src="../js/products.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/boutique.js"></script>
+
+    <!-- ===== MENU MOBILE ===== -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
+    <div class="mobile-menu-panel">
+      <button class="mobile-menu-close" aria-label="Fermer le menu">&times;</button>
+      <nav class="mobile-menu-nav">
+        <a href="index.html">Accueil</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="about.html">À propos</a>
+        <a href="about.html#contact">Contact</a>
+      </nav>
+      <a href="#panier" class="mobile-menu-cta" onclick="if(typeof toggleCart==='function'){toggleCart(event);document.getElementById('mobileMenuOverlay').classList.remove('open');document.body.style.overflow=''}">
+        Panier <span class="cart-count mobile-cart-count">0</span>
+      </a>
+    </div>
+  </div>
+  <script src="../js/mobile-menu.js"></script>
+</body>
+</html>

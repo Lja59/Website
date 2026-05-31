@@ -1,0 +1,12 @@
+.cart-count {
+  display: none; /* affichage géré par JS : flex quand total > 0 */
+  background: var(--orange-terre);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+}

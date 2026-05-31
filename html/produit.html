@@ -3,10 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="page-title">Produit — O'Pays des Merveilles</title>
+  <title>Produit — O'Pays des Merveilles</title>
   <meta name="description" content="Détail d'une création artisanale faite main d'O'Pays des Merveilles." />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="produit.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/produit.css" />
+  <link rel="icon" href="../image/identity/logo.jpg" type="image/jpeg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Produit — O'Pays des Merveilles" />
+  <meta property="og:description" content="Créations artisanales faites main avec amour." />
+  <meta property="og:url" content="https://opaysdesmerveilles.fr/html/produit.html" />
+  <meta property="og:image" content="../image/identity/logo.jpg" />
+  <link rel="stylesheet" href="../css/cart-count.css" />
 </head>
 <body>
 
@@ -16,7 +23,7 @@
   <!-- NAVIGATION -->
   <nav>
     <a href="index.html" class="nav-logo">
-      <img src="logo.jpg" alt="O'Pays des Merveilles" />
+      <img src="../image/identity/logo.jpg" alt="O'Pays des Merveilles" />
       <div class="nav-logo-text">O'Pays des<br>Merveilles</div>
     </a>
     <ul class="nav-links">
@@ -24,21 +31,26 @@
       <li><a href="boutique.html">Boutique</a></li>
       <li><a href="about.html">À propos</a></li>
       <li>
-        <a href="boutique.html" class="nav-cta" id="nav-cart-btn">
+        <a href="#" class="nav-cta" onclick="toggleCart(event)">
           Panier
-          <span class="cart-count" style="display:none; background:var(--orange-terre); color:white; border-radius:50%; width:18px; height:18px; font-size:0.7rem; align-items:center; justify-content:center; margin-left:4px;">0</span>
+          <span class="cart-count">0</span>
         </a>
       </li>
     </ul>
+    <button class="nav-hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
   <!-- BREADCRUMB -->
   <div class="breadcrumb">
     <div class="breadcrumb-inner">
       <a href="index.html">Accueil</a>
-      <span></span>
+      <span>›</span>
       <a href="boutique.html">Boutique</a>
-      <span></span>
+      <span>›</span>
       <span id="breadcrumb-name">Chargement…</span>
     </div>
   </div>
@@ -47,23 +59,37 @@
   <section class="product-detail">
     <div class="product-detail-inner">
 
-      <!-- GALERIE -->
+      <!-- ===== GALERIE STYLE AMAZON ===== -->
       <div class="gallery">
-        <div class="gallery-thumbnails" id="gallery-thumbs"></div>
-        <div class="gallery-main">
-          <div class="gallery-main-img" id="gallery-main">
+
+        <!-- Colonne thumbnails verticaux (gauche) -->
+        <div class="gallery-thumbs-col" id="gallery-thumbs"></div>
+
+        <!-- Image principale (droite) -->
+        <div class="gallery-main-wrap">
+          <div class="gallery-main" id="gallery-main">
+
+            <!-- Fallback emoji quand pas de photo -->
             <div class="gallery-placeholder" id="gallery-placeholder">
               <span id="gallery-icon">🌿</span>
+              <p class="gallery-placeholder-hint">Photo bientôt disponible</p>
             </div>
-            <img id="gallery-img" src="" alt="" style="display:none;" />
+
+            <!-- Image réelle -->
+            <img id="gallery-img"
+                 src=""
+                 alt=""
+                 style="display:none; width:100%; height:100%; object-fit:cover; transition:opacity 0.25s;" />
+
+            <!-- Flèches navigation -->
+            <button class="gallery-arrow gallery-prev" onclick="galleryNav(-1)" aria-label="Photo précédente">‹</button>
+            <button class="gallery-arrow gallery-next" onclick="galleryNav(+1)" aria-label="Photo suivante">›</button>
+
           </div>
-          <button class="gallery-arrow gallery-prev" onclick="galleryNav(-1)">‹</button>
-          <button class="gallery-arrow gallery-next" onclick="galleryNav(+1)">›</button>
-          <div class="gallery-dots" id="gallery-dots"></div>
         </div>
       </div>
 
-      <!-- INFOS PRODUIT -->
+      <!-- ===== PANNEAU INFO ===== -->
       <div class="product-info-panel">
 
         <div class="product-tags-row" id="product-tags-row"></div>
@@ -82,31 +108,17 @@
 
         <p class="product-description" id="product-description">—</p>
 
-        <!-- VARIANTES COULEUR -->
-        <div class="variant-section" id="color-section" style="display:none;">
-          <div class="variant-label">
-            Couleur : <strong id="selected-color-label">—</strong>
-          </div>
-          <div class="variant-swatches" id="color-swatches"></div>
-        </div>
-
-        <!-- VARIANTES TAILLE -->
-        <div class="variant-section" id="size-section" style="display:none;">
-          <div class="variant-label">
-            Taille / Dimension : <strong id="selected-size-label">—</strong>
-          </div>
-          <div class="variant-sizes" id="size-options"></div>
-        </div>
+        <!-- Les variantes sont injectées ici par produit.js (avant .add-to-cart-row) -->
 
         <!-- QUANTITÉ + AJOUT -->
         <div class="add-to-cart-row">
           <div class="qty-selector">
-            <button onclick="changeQtyDisplay(-1)">−</button>
+            <button onclick="changeQtyDisplay(-1)" aria-label="Moins">−</button>
             <span id="qty-display">1</span>
-            <button onclick="changeQtyDisplay(+1)">+</button>
+            <button onclick="changeQtyDisplay(+1)" aria-label="Plus">+</button>
           </div>
-          <button class="btn btn-orange add-main-btn" id="add-cart-btn" onclick="addCurrentToCart()">
-            Ajouter au panier
+          <button class="btn btn-orange add-main-btn" onclick="addCurrentToCart()">
+            🛒 Ajouter au panier
           </button>
         </div>
 
@@ -140,11 +152,11 @@
           </div>
         </div>
 
-      </div>
-    </div>
+      </div><!-- fin product-info-panel -->
+    </div><!-- fin product-detail-inner -->
   </section>
 
-  <!-- DESCRIPTION LONGUE / ONGLETS -->
+  <!-- ONGLETS -->
   <section class="product-tabs">
     <div class="product-tabs-inner">
       <div class="tabs-nav">
@@ -153,15 +165,9 @@
         <button class="tab-btn" onclick="switchTab('entretien', this)">Entretien</button>
       </div>
       <div class="tabs-content">
-        <div class="tab-panel active" id="tab-details">
-          <p id="tab-details-text">—</p>
-        </div>
-        <div class="tab-panel" id="tab-materiaux">
-          <p id="tab-materiaux-text">—</p>
-        </div>
-        <div class="tab-panel" id="tab-entretien">
-          <p id="tab-entretien-text">—</p>
-        </div>
+        <div class="tab-panel active" id="tab-details">  <p id="tab-details-text">—</p>  </div>
+        <div class="tab-panel"        id="tab-materiaux"><p id="tab-materiaux-text">—</p></div>
+        <div class="tab-panel"        id="tab-entretien"><p id="tab-entretien-text">—</p></div>
       </div>
     </div>
   </section>
@@ -175,7 +181,7 @@
     </div>
   </section>
 
-  <!-- PANIER LATÉRAL (même que boutique) -->
+  <!-- PANIER LATÉRAL -->
   <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
   <aside class="cart-sidebar" id="cart-sidebar">
     <div class="cart-header">
@@ -191,7 +197,9 @@
       <button class="btn btn-orange" style="width:100%; justify-content:center;" onclick="sendOrderByMail()">
         ✉️ Envoyer ma demande de commande
       </button>
-      <p class="cart-note">Vous serez redirigé·e vers votre messagerie avec le détail de votre commande déjà rédigé.</p>
+      <p class="cart-note">
+        Votre messagerie s'ouvrira avec le détail de votre commande déjà rédigé, prêt à envoyer.
+      </p>
     </div>
   </aside>
 
@@ -199,8 +207,10 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="logo.jpg" alt="O'Pays des Merveilles" />
-        <div class="nav-logo-text" style="color:var(--vert-menthe); margin-bottom:0.8rem; font-size:1.1rem;">O'Pays des Merveilles</div>
+        <img src="../image/identity/logo.jpg" alt="O'Pays des Merveilles" />
+        <div class="nav-logo-text" style="color:var(--vert-menthe); margin-bottom:0.8rem; font-size:1.1rem;">
+          O'Pays des Merveilles
+        </div>
         <p>Des créations artisanales faites main, avec passion et authenticité. Chaque pièce est unique, comme vous.</p>
       </div>
       <div class="footer-col">
@@ -227,7 +237,26 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
-  <script src="produit.js"></script>
+  <!-- Ordre important : products.js → main.js → produit.js -->
+  <script src="../js/products.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/produit.js"></script>
+
+    <!-- ===== MENU MOBILE ===== -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
+    <div class="mobile-menu-panel">
+      <button class="mobile-menu-close" aria-label="Fermer le menu">&times;</button>
+      <nav class="mobile-menu-nav">
+        <a href="index.html">Accueil</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="about.html">À propos</a>
+        <a href="about.html#contact">Contact</a>
+      </nav>
+      <a href="#panier" class="mobile-menu-cta" onclick="if(typeof toggleCart==='function'){toggleCart(event);document.getElementById('mobileMenuOverlay').classList.remove('open');document.body.style.overflow=''}">
+        Panier <span class="cart-count mobile-cart-count">0</span>
+      </a>
+    </div>
+  </div>
+  <script src="../js/mobile-menu.js"></script>
 </body>
 </html>

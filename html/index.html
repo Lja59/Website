@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>O'Pays des Merveilles — Des Mains en Or</title>
   <meta name="description" content="Créations artisanales faites main avec amour. Découvrez des pièces uniques, nées de mains en or." />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/home.css" />
+  <link rel="icon" href="../image/identity/logo.jpg" type="image/jpeg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="O'Pays des Merveilles — Des Mains en Or" />
+  <meta property="og:description" content="Créations artisanales faites main avec amour. Découvrez des pièces uniques, nées de mains en or." />
+  <meta property="og:url" content="https://opaysdesmerveilles.fr/" />
+  <meta property="og:image" content="../image/identity/logo.jpg" />
+  <link rel="stylesheet" href="../css/cart-count.css" />
 </head>
 <body>
 
@@ -16,19 +23,24 @@
   <!-- NAVIGATION -->
   <nav>
     <a href="index.html" class="nav-logo">
-      <img src="logo.jpg" alt="O'Pays des Merveilles" />
+      <img src="../image/identity/logo.jpg" alt="O'Pays des Merveilles" />
       <div class="nav-logo-text">O'Pays des<br>Merveilles</div>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="index.html">Accueil</a></li>
       <li><a href="boutique.html">Boutique</a></li>
       <li><a href="about.html">À propos</a></li>
       <li>
         <a href="boutique.html" class="nav-cta">
-          Panier <span class="cart-count" style="display:none; background:var(--orange-terre); color:white; border-radius:50%; width:18px; height:18px; font-size:0.7rem; align-items:center; justify-content:center; margin-left:4px;">0</span>
+          Panier <span class="cart-count">0</span>
         </a>
       </li>
     </ul>
+    <button class="nav-hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
   <!-- HERO -->
@@ -76,7 +88,7 @@
       <div class="hero-visual">
         <div class="hero-card-float">
           <div class="hero-img-wrap">
-            <img src="logo.jpg" alt="O'Pays des Merveilles" class="hero-logo-big" />
+            <img src="../image/identity/logo.jpg" alt="O'Pays des Merveilles" class="hero-logo-big" />
           </div>
           <div class="hero-badge">
             <span>Des Mains</span>
@@ -113,7 +125,7 @@
     </div>
   </section>
 
-  <!-- SÉLECTION COUP DE CŒUR -->
+  <!-- SÉLECTION COUP DE CŒUR — générée dynamiquement depuis products.js -->
   <section class="featured">
     <div class="featured-inner">
       <div class="featured-header reveal">
@@ -122,60 +134,8 @@
         <p class="section-subtitle">Un aperçu de ce qui vous attend dans la boutique — des trésors à s'offrir ou à offrir.</p>
       </div>
 
-      <div class="featured-grid">
-        <div class="product-card featured-card reveal" data-id="1" data-name="Création #1" data-price="28">
-          <div class="product-img-wrap">
-            <div class="product-img-placeholder">
-              <span>🌿</span>
-              <p>Votre photo<br>ici</p>
-            </div>
-            <div class="product-overlay">
-              <button class="btn btn-orange" onclick="addToCart({id:'1', name:'Création #1', price:28})">Ajouter au panier</button>
-            </div>
-            <span class="product-badge">Nouveauté</span>
-          </div>
-          <div class="product-info">
-            <span class="tag">Déco</span>
-            <h3>Création Signature #1</h3>
-            <div class="product-price">28 €</div>
-          </div>
-        </div>
-
-        <div class="product-card featured-card reveal" data-id="2" data-name="Création #2" data-price="35">
-          <div class="product-img-wrap">
-            <div class="product-img-placeholder">
-              <span>🌸</span>
-              <p>Votre photo<br>ici</p>
-            </div>
-            <div class="product-overlay">
-              <button class="btn btn-orange" onclick="addToCart({id:'2', name:'Création #2', price:35})">Ajouter au panier</button>
-            </div>
-            <span class="product-badge badge-orange">Coup de ♥</span>
-          </div>
-          <div class="product-info">
-            <span class="tag tag-orange">Bijou</span>
-            <h3>Création Signature #2</h3>
-            <div class="product-price">35 €</div>
-          </div>
-        </div>
-
-        <div class="product-card featured-card reveal" data-id="3" data-name="Création #3" data-price="22">
-          <div class="product-img-wrap">
-            <div class="product-img-placeholder">
-              <span>🍂</span>
-              <p>Votre photo<br>ici</p>
-            </div>
-            <div class="product-overlay">
-              <button class="btn btn-orange" onclick="addToCart({id:'3', name:'Création #3', price:22})">Ajouter au panier</button>
-            </div>
-          </div>
-          <div class="product-info">
-            <span class="tag">Textile</span>
-            <h3>Création Signature #3</h3>
-            <div class="product-price">22 €</div>
-          </div>
-        </div>
-      </div>
+      <!-- Les cartes sont injectées ici par le script ci-dessous -->
+      <div class="featured-grid" id="featured-grid"></div>
 
       <div class="featured-cta reveal">
         <a href="boutique.html" class="btn btn-primary">Voir toute la collection →</a>
@@ -185,16 +145,7 @@
 
   <!-- BANDE TEXTE DÉFILANT -->
   <div class="ticker-wrap">
-    <div class="ticker">
-      <span>Fait main avec amour ✦</span>
-      <span>Des Mains en Or ✦</span>
-      <span>Pièces uniques ✦</span>
-      <span>Artisanat français ✦</span>
-      <span>Fait main avec amour ✦</span>
-      <span>Des Mains en Or ✦</span>
-      <span>Pièces uniques ✦</span>
-      <span>Artisanat français ✦</span>
-    </div>
+    <div class="ticker-track" id="tickerTrack"></div>
   </div>
 
   <!-- SECTION HISTOIRE / PORTRAIT -->
@@ -240,7 +191,7 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="logo.jpg" alt="O'Pays des Merveilles" />
+        <img src="../image/identity/logo.jpg" alt="O'Pays des Merveilles" />
         <div class="nav-logo-text" style="color:var(--vert-menthe); margin-bottom:0.8rem; font-size:1.1rem;">O'Pays des Merveilles</div>
         <p>Des créations artisanales faites main, avec passion et authenticité. Chaque pièce est unique, comme vous.</p>
       </div>
@@ -268,13 +219,25 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
-  <script>
-    function handleNewsletter(e) {
-      e.preventDefault();
-      showToast('Merci ! Vous êtes maintenant inscrit·e 🌿');
-      e.target.reset();
-    }
-  </script>
+  <script src="../js/products.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/home.js"></script>
+
+    <!-- ===== MENU MOBILE ===== -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
+    <div class="mobile-menu-panel">
+      <button class="mobile-menu-close" aria-label="Fermer le menu">&times;</button>
+      <nav class="mobile-menu-nav">
+        <a href="index.html">Accueil</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="about.html">À propos</a>
+        <a href="about.html#contact">Contact</a>
+      </nav>
+      <a href="boutique.html" class="mobile-menu-cta">
+        Panier <span class="cart-count mobile-cart-count">0</span>
+      </a>
+    </div>
+  </div>
+  <script src="../js/mobile-menu.js"></script>
 </body>
 </html>

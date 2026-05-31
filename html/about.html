@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>À propos & Contact — O'Pays des Merveilles</title>
   <meta name="description" content="Découvrez l'histoire d'O'Pays des Merveilles et prenez contact pour toute commande personnalisée ou question." />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="about.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/about.css" />
+  <link rel="icon" href="../image/identity/logo.jpg" type="image/jpeg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="À propos — O'Pays des Merveilles" />
+  <meta property="og:description" content="Découvrez l'histoire d'O'Pays des Merveilles et prenez contact." />
+  <meta property="og:url" content="https://opaysdesmerveilles.fr/html/about.html" />
+  <meta property="og:image" content="../image/identity/logo.jpg" />
+  <link rel="stylesheet" href="../css/cart-count.css" />
 </head>
 <body>
 
@@ -16,7 +23,7 @@
   <!-- NAVIGATION -->
   <nav>
     <a href="index.html" class="nav-logo">
-      <img src="logo.jpg" alt="O'Pays des Merveilles" />
+      <img src="../image/identity/logo.jpg" alt="O'Pays des Merveilles" />
       <div class="nav-logo-text">O'Pays des<br>Merveilles</div>
     </a>
     <ul class="nav-links">
@@ -25,10 +32,15 @@
       <li><a href="about.html" class="active">À propos</a></li>
       <li>
         <a href="boutique.html" class="nav-cta">
-          Panier <span class="cart-count" style="display:none; background:var(--orange-terre); color:white; border-radius:50%; width:18px; height:18px; font-size:0.7rem; align-items:center; justify-content:center; margin-left:4px;">0</span>
+          Panier <span class="cart-count">0</span>
         </a>
       </li>
     </ul>
+    <button class="nav-hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
   <!-- HERO ABOUT -->
@@ -58,7 +70,7 @@
           </div>
           <div class="about-img-deco"></div>
           <div class="about-img-badge">
-            <img src="logo.jpg" alt="logo" />
+            <img src="../image/identity/logo.jpg" alt="logo" />
           </div>
         </div>
       </div>
@@ -193,9 +205,9 @@
         </div>
 
         <div class="contact-social">
-          <a href="#" class="social-btn">Instagram</a>
-          <a href="#" class="social-btn">Facebook</a>
-          <a href="#" class="social-btn">Pinterest</a>
+          <a href="https://www.instagram.com/o__pays_des_merveilles?igsh=MXg1M3dvbzJwbmDmYg==" class="social-btn">Instagram</a>
+          <a href="https://www.facebook.com/people/OPays_des_Merveilles/100092210655851/#" class="social-btn">Facebook</a>
+          <a href="https://www.vinted.fr/member/288520000-newdyy?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcASJB45leHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAaeAkEJoG6jR5b9kwqkKl6-HJ4v36eFGtKimRadkI3Eoid_iFzJlN2HKq273tg_aem_UegjlEWt0_bpyWfjfLaiOw" class="social-btn">Vinted</a>
         </div>
       </div>
 
@@ -290,7 +302,7 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="logo.jpg" alt="O'Pays des Merveilles" />
+        <img src="../image/identity/logo.jpg" alt="O'Pays des Merveilles" />
         <div class="nav-logo-text" style="color:var(--vert-menthe); margin-bottom:0.8rem; font-size:1.1rem;">O'Pays des Merveilles</div>
         <p>Des créations artisanales faites main, avec passion et authenticité. Chaque pièce est unique, comme vous.</p>
       </div>
@@ -318,32 +330,25 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
-  <script>
-    function handleContact(e) {
-      e.preventDefault();
-      showToast('Message envoyé ! Je vous répondrai sous 48h 🌿');
-      e.target.reset();
-    }
+  <script src="../js/products.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/about.js"></script>
 
-    function toggleFaq(btn) {
-      const item = btn.closest('.faq-item');
-      const answer = item.querySelector('.faq-answer');
-      const arrow = btn.querySelector('.faq-arrow');
-      const isOpen = item.classList.contains('open');
-
-      document.querySelectorAll('.faq-item.open').forEach(el => {
-        el.classList.remove('open');
-        el.querySelector('.faq-answer').style.maxHeight = null;
-        el.querySelector('.faq-arrow').textContent = '+';
-      });
-
-      if (!isOpen) {
-        item.classList.add('open');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-        arrow.textContent = '−';
-      }
-    }
-  </script>
+    <!-- ===== MENU MOBILE ===== -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
+    <div class="mobile-menu-panel">
+      <button class="mobile-menu-close" aria-label="Fermer le menu">&times;</button>
+      <nav class="mobile-menu-nav">
+        <a href="index.html">Accueil</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="about.html">À propos</a>
+        <a href="about.html#contact">Contact</a>
+      </nav>
+      <a href="boutique.html" class="mobile-menu-cta">
+        Panier <span class="cart-count mobile-cart-count">0</span>
+      </a>
+    </div>
+  </div>
+  <script src="../js/mobile-menu.js"></script>
 </body>
 </html>
