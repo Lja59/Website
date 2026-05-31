@@ -15,27 +15,30 @@ function escHtml(str) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const cursor   = document.querySelector('.cursor');
-  const follower = document.querySelector('.cursor-follower');
+  const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || navigator.maxTouchPoints > 1;
 
-  const isTouchDevice =
-    window.matchMedia("(pointer: coarse)").matches ||
-    'ontouchstart' in window;
+  if (!isTouchDevice) {
 
-  if (isTouchDevice) {
-    cursor?.remove();
-    follower?.remove();
-  }
-  else if (cursor && follower) {
-    let mouseX = 0, mouseY = 0;
-    let fX = 0, fY = 0;
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor';
+
+    const follower = document.createElement('div');
+    follower.className = 'cursor-follower';
+
+    document.body.appendChild(cursor);
+    document.body.appendChild(follower);
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let fX = 0;
+    let fY = 0;
 
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
 
       cursor.style.transform =
-        `translate(${mouseX}px, ${mouseY}px) translate(-50%,-50%)`;
+        `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
     });
 
     (function animateFollower() {
@@ -43,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fY += (mouseY - fY) * 0.1;
 
       follower.style.transform =
-        `translate(${fX}px, ${fY}px) translate(-50%,-50%)`;
+        `translate(${fX}px, ${fY}px) translate(-50%, -50%)`;
 
       requestAnimationFrame(animateFollower);
     })();
