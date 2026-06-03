@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page introuvable — O'Pays des Merveilles</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="../image/identity/logo.jpg" type="image/jpeg" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .error-page {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+    }
+    .error-inner { max-width: 520px; }
+    .error-code {
+      font-family: var(--font-accent);
+      font-size: clamp(5rem, 15vw, 10rem);
+      color: var(--vert-pale);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .error-title {
+      font-family: var(--font-titre);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--vert-fonce);
+      margin-bottom: 1rem;
+    }
+    .error-desc {
+      color: var(--texte-leger);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .error-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+  <main class="error-page">
+    <div class="error-inner">
+      <div class="error-code">404</div>
+      <h1 class="error-title">Oups, cette page s'est perdue dans les merveilles…</h1>
+      <p class="error-desc">
+        La page que vous cherchez n'existe pas ou a été déplacée.
+        Pas de panique — la boutique est toujours là pour vous !
+      </p>
+      <div class="error-actions">
+        <a href="index.html"    class="btn btn-primary">Retour à l'accueil</a>
+        <a href="boutique.html" class="btn btn-outline">Voir la boutique</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/products.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+</body>
+</html>

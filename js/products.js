@@ -52,12 +52,12 @@ const PRODUCTS = {
     price: 3,
     featured: true,
     images: [
-      "../image/products/rose_beige.jpg"
+      "../image/products/rose_unie/rose_beige.jpg"
     ],
     icon: "🌿",
     category: "fleurs",
     badge: null,
-    badgeColor: "#28a745",
+    badgeColor: "#2C5F2E",
     stock: "in-stock",
     description: "Une collection de roses crochetées aux couleurs pures et élégantes. Chaque fleur met en valeur une teinte unique, allant des tons doux et naturels aux couleurs les plus vives. Simples et intemporelles, elles constituent la base de toute collection florale.",
     highlights: [
@@ -78,62 +78,62 @@ const PRODUCTS = {
         options: [
           {
             value: "beige", label: "Beige", color: "#E8E1D5",
-            images: ["../image/products/rose_beige.jpg"],
+            images: ["../image/products/rose_unie/rose_beige.jpg"],
             description: "Rose élégante et discrète aux nuances naturelles.",
           },
           {
             value: "turquoise", label: "Turquoise", color: "#A7E3DD",
-            images: ["../image/products/rose_turquoise.jpg"],
+            images: ["../image/products/rose_unie/rose_turquoise.jpg"],
             description: "Rose aux tons marins clairs évoquant les lagons tropicaux."
           },
           {
             value: "menthe", label: "Menthe", color: "#8EB8A5",
-            images: ["../image/products/rose_menthe.jpg"],
+            images: ["../image/products/rose_unie/rose_menthe.jpg"],
             description: "Fleur douce et apaisante inspirée des feuilles de menthe fraîche."
           },
           {
             value: "ciel", label: "Ciel", color: "#4EB5E8",
-            images: ["../image/products/rose_ciel.jpg"],
+            images: ["../image/products/rose_unie/rose_ciel.jpg"],
             description: "Rose lumineuse rappelant un ciel d'été sans nuages."
           },
           {
             value: "marine", label: "Marine", color: "#163E96",
-            images: ["../image/products/rose_marine.jpg"],
+            images: ["../image/products/rose_unie/rose_marine.jpg"],
             description: "Fleur profonde aux teintes de l'océan au crépuscule."
           },
           {
             value: "violet", label: "Violet", color: "#4E347D",
-            images: ["../image/products/rose_violet.jpg"],
+            images: ["../image/products/rose_unie/rose_violet.jpg"],
             description: "Fleur mystérieuse associée à la créativité et à la magie."
           },
           {
             value: "gris", label: "Gris", color: "#B0B0B0",
-            images: ["../image/products/rose_gris.jpg"],
+            images: ["../image/products/rose_unie/rose_gris.jpg"],
             description: "Rose sobre aux couleurs minérales et raffinées."
           },
           {
             value: "rose", label: "Rose", color: "#D88BA5",
-            images: ["../image/products/rose_rose.jpg"],
+            images: ["../image/products/rose_unie/rose_rose.jpg"],
             description: "Fleur tendre symbolisant l'affection et la douceur."
           },
           {
             value: "noir", label: "Noir", color: "#1A1A1A",
-            images: ["../image/products/rose_noir.jpg"],
+            images: ["../image/products/rose_unie/rose_noir.jpg"],
             description: "Rose rare aux pétales sombres et énigmatiques."
           },
           {
             value: "rouge", label: "Rouge", color: "#B71C2A",
-            images: ["../image/products/rose_rouge.jpg"],
+            images: ["../image/products/rose_unie/rose_rouge.jpg"],
             description: "Fleur passionnée représentant le courage et l'amour."
           },
           {
             value: "orange", label: "Orange", color: "#C75A28",
-            images: ["../image/products/rose_orange.jpg"],
+            images: ["../image/products/rose_unie/rose_orange.jpg"],
             description: "Rose chaleureuse aux couleurs du coucher de soleil."
           },
           {
             value: "jaune", label: "Jaune", color: "#D9C13A",
-            images: ["../image/products/rose_jaune.jpg"],
+            images: ["../image/products/rose_unie/rose_jaune.jpg"],
             description: "Fleur rayonnante inspirée par la lumière du soleil."
           },
         ]
@@ -146,12 +146,12 @@ const PRODUCTS = {
     price: 3,
     featured: true,
     images: [
-      "../image/products/rose_om.jpg"
+      "../image/products/rose_a_motif/rose_om.jpg"
     ],
     icon: "🌿",
     category: "fleurs",
     badge: "Nouveauté",
-    badgeColor: "#28a745",
+    badgeColor: "#2C5F2E",
     stock: "in-stock",
     description: "Une série de roses crochetées combinant plusieurs couleurs dans une même fleur. Ces créations originales offrent des contrastes harmonieux ou audacieux, donnant naissance à des variétés rares et distinctives inspirées de thèmes, de gourmandises ou d'associations de couleurs emblématiques.",
     highlights: [
@@ -172,57 +172,57 @@ const PRODUCTS = {
         options: [
           {
             value: "om", label: "OM", colors: ["#F2F2F2", "#7CC6F5"],
-            images: ["../image/products/rose_om.jpg"],
+            images: ["../image/products/rose_a_motif/rose_om.jpg"],
             description: "Rose lumineuse aux couleurs fraîches et aériennes.",
           },
           {
             value: "lakers", label: "Lakers", colors: ["#F0B52A", "#4F2C84"],
-            images: ["../image/products/rose_lakers.jpg"],
+            images: ["../image/products/rose_a_motif/rose_lakers.jpg"],
             description: "Alliance royale de violet et d'or, symbole de prestige."
           },
           {
             value: "rosy", label: "Rosy", colors: ["#D88BA5", "#21408F"],
-            images: ["../image/products/rose_rosy.jpg"],
+            images: ["../image/products/rose_a_motif/rose_rosy.jpg"],
             description: "Mariage harmonieux entre douceur florale et bleu profond."
           },
           {
             value: "bleuet", label: "Bleuet", colors: ["#46B5E8", "#21408F"],
-            images: ["../image/products/rose_bleuet.jpg"],
+            images: ["../image/products/rose_a_motif/rose_bleuet.jpg"],
             description: "Fleur inspirée des eaux claires et des océans profonds."
           },
           {
             value: "fraise-chantilly", label: "Fraise-Chantilly", colors: ["#F2F2F2", "#E7A0B9"],
-            images: ["../image/products/rose_fraise_chantilly.jpg"],
+            images: ["../image/products/rose_a_motif/rose_fraise_chantilly.jpg"],
             description: "Fleur gourmande rappelant un dessert léger et sucré."
           },
           {
             value: "chocolat", label: "Chocolat", colors: ["#C6A37A", "#7A5234"],
-            images: ["../image/products/rose_chocolat.jpg"],
+            images: ["../image/products/rose_a_motif/rose_chocolat.jpg"],
             description: "Rose aux teintes riches inspirées du cacao."
           },
           {
             value: "oreo", label: "Oréo", colors: ["#F2F2F2", "#1A1A1A"],
-            images: ["../image/products/rose_oreo.jpg"],
+            images: ["../image/products/rose_a_motif/rose_oreo.jpg"],
             description: "Contraste parfait entre lumière et obscurité."
           },
           {
             value: "cafe", label: "Café", color : "#C5A67B",
-            images: ["../image/products/rose_cafe.jpg"],
+            images: ["../image/products/rose_a_motif/rose_cafe.jpg"],
             description: "Fleur aux couleurs chaleureuses d'un café fraîchement torréfié."
           },
           {
             value: "rcl", label: "RCL", colors: ["#C71F25", "#E3D043"],
-            images: ["../image/products/rose_rcl.jpg"],
+            images: ["../image/products/rose_a_motif/rose_rcl.jpg"],
             description: "Variété flamboyante aux couleurs éclatantes et énergétiques."
           },
           {
             value: "orangeade", label: "Orangeade", colors: ["#B72524", "#D56A2E"],
-            images: ["../image/products/rose_orangeade.jpg"],
+            images: ["../image/products/rose_a_motif/rose_orangeade.jpg"],
             description: "Mélange fruité de rouge intense et d'orange vif."
           },
           {
             value: "potiron", label: "Potiron", colors: ["#D96D2C", "#DCC84A"],
-            images: ["../image/products/rose_potiron.jpg"],
+            images: ["../image/products/rose_a_motif/rose_potiron.jpg"],
             description: "Fleur automnale inspirée des récoltes de saison."
           }
         ]
@@ -235,12 +235,12 @@ const PRODUCTS = {
     price: 3,
     featured: true,
     images: [
-      "../image/products/tulipe_beige.jpg"
+      "../image/products/tulipe/tulipe_beige.jpg"
     ],
     icon: "🌿",
     category: "fleurs",
     badge: null,
-    badgeColor: "#28a745",
+    badgeColor: "#2C5F2E",
     stock: "in-stock",
     description: "Une collection de fleurs crochetées à la main aux couleurs douces et éclatantes. Chaque création met en avant une teinte unique et un design épuré, offrant une décoration intemporelle qui ne fane jamais.",
     highlights: [
@@ -261,37 +261,37 @@ const PRODUCTS = {
         options: [
           {
             value: "beige", label: "Beige", color: "#F1EFE8",
-            images: ["../image/products/tulipe_beige.jpg"],
+            images: ["../image/products/tulipe/tulipe_beige.jpg"],
             description: "Fleur délicate aux tons naturels et apaisants."
           },
           {
             value: "jaune_doree", label: "Jaune doré", color: "#D8AA3C",
-            images: ["../image/products/tulipe_jaune_dore.jpg"],
+            images: ["../image/products/tulipe/tulipe_jaune_dore.jpg"],
             description: "Fleur lumineuse inspirée des champs baignés de soleil.",
           },
           {
             value: "orange", label: "Orange", color: "#D56A2E",
-            images: ["../image/products/tulipe_orange.jpg"],
+            images: ["../image/products/tulipe/tulipe_orange.jpg"],
             description: "Fleur chaleureuse aux couleurs des couchers de soleil d'automne."
           },
           {
             value: "rouge", label: "Rouge", color: "#B71C2A",
-            images: ["../image/products/tulipe_rouge.jpg"],
+            images: ["../image/products/tulipe/tulipe_rouge.jpg"],
             description: "Fleur éclatante symbolisant la passion et l'énergie."
           },
           {
             value: "rose_pale", label: "Rose pâle", color: "#E5C7D5",
-            images: ["../image/products/tulipe_rose_pale.jpg"],
+            images: ["../image/products/tulipe/tulipe_rose_pale.jpg"],
             description: "Fleur douce évoquant la tendresse et la légèreté."
           },
           {
             value: "rose", label: "Rose", color: "#D88BA5",
-            images: ["../image/products/tulipe_rose.jpg"],
+            images: ["../image/products/tulipe/tulipe_rose.jpg"],
             description: "Fleur élégante aux nuances romantiques."
           },
           {
             value: "violet", label: "Violet", color: "#7452B6",
-            images: ["../image/products/tulipe_violet.jpg"],
+            images: ["../image/products/tulipe/tulipe_violet.jpg"],
             description: "Fleur mystérieuse aux teintes royales et raffinées."
           }
         ]

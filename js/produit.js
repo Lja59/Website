@@ -8,11 +8,6 @@
    ============================================================ */
 
 
-/* === getCategoryLabel — définie localement pour fiabilité === */
-function getCategoryLabel(cat) {
-  const labels = { fleurs: "Fleurs" };
-  return labels[cat] || cat;
-}
 document.addEventListener('DOMContentLoaded', () => {
   const id      = new URLSearchParams(window.location.search).get('id');
   const product = window.PRODUCTS?.[id];

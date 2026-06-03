@@ -1,0 +1,154 @@
+/* ============================================================
+   LEGAL.CSS — O'Pays des Merveilles
+   Utilisé par : mentions-legales.html, cgv.html, livraison.html
+   ============================================================ */
+
+.legal-page {
+  padding-top: 7rem;
+  padding-bottom: 5rem;
+  min-height: 80vh;
+}
+
+.legal-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* === EN-TÊTE === */
+.legal-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.legal-header .section-subtitle {
+  margin: 1rem auto 0;
+}
+
+/* === CARDS RAPIDES (livraison) === */
+.legal-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.legal-card {
+  background: var(--blanc);
+  border-radius: var(--radius-sm);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.legal-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.legal-card h3 {
+  font-family: var(--font-titre);
+  font-size: 1.1rem;
+  color: var(--vert-fonce);
+  margin-bottom: 0.5rem;
+}
+
+.legal-card p {
+  font-size: 0.9rem;
+  color: var(--texte-leger);
+  line-height: 1.6;
+}
+
+/* === CONTENU ARTICLE === */
+.legal-content {
+  background: var(--blanc);
+  border-radius: var(--radius-sm);
+  padding: 3rem;
+  box-shadow: var(--shadow);
+}
+
+.legal-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--beige);
+}
+
+.legal-section:last-of-type {
+  border-bottom: none;
+}
+
+.legal-section h2 {
+  font-family: var(--font-titre);
+  font-size: 1.4rem;
+  color: var(--vert-fonce);
+  margin-bottom: 1rem;
+}
+
+.legal-section h3 {
+  font-family: var(--font-corps);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--texte);
+  margin: 1.2rem 0 0.5rem;
+}
+
+.legal-section p {
+  color: var(--texte-leger);
+  line-height: 1.8;
+  margin-bottom: 0.8rem;
+}
+
+.legal-section ul {
+  padding-left: 1.5rem;
+  color: var(--texte-leger);
+  line-height: 2;
+}
+
+.legal-section a {
+  color: var(--vert-moyen);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.legal-section a:hover {
+  color: var(--orange-terre);
+}
+
+/* Note de remplissage */
+.legal-note {
+  background: #fff8e1;
+  border-left: 3px solid var(--orange-terre);
+  padding: 0.8rem 1rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.88rem;
+  color: var(--texte);
+  margin: 0.8rem 0;
+}
+
+.legal-date {
+  font-size: 0.85rem;
+  color: var(--texte-leger);
+  font-style: italic;
+  margin-top: 2rem;
+}
+
+/* === BOUTONS RETOUR === */
+.legal-back {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--beige);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .legal-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .legal-section h2 {
+    font-size: 1.2rem;
+  }
+}

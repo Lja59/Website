@@ -5,40 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>O'Pays des Merveilles — Des Mains en Or</title>
   <meta name="description" content="Créations artisanales faites main avec amour. Découvrez des pièces uniques, nées de mains en or." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://opaysdesmerveilles.fr/" />
+  <link rel="icon" href="../image/identity/logo.jpg" type="image/jpeg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="O'Pays des Merveilles — Des Mains en Or" />
+  <meta property="og:description" content="Créations artisanales faites main avec amour. Découvrez des pièces uniques, nées de mains en or." />
+  <meta property="og:url"         content="https://opaysdesmerveilles.fr/" />
+  <meta property="og:image"       content="https://opaysdesmerveilles.fr/image/identity/logo.jpg" />
+
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/home.css" />
-  <link rel="icon" href="../image/identity/logo.jpg" type="image/jpeg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="O'Pays des Merveilles — Des Mains en Or" />
-  <meta property="og:description" content="Créations artisanales faites main avec amour. Découvrez des pièces uniques, nées de mains en or." />
-  <meta property="og:url" content="https://opaysdesmerveilles.fr/" />
-  <meta property="og:image" content="../image/identity/logo.jpg" />
-  <link rel="stylesheet" href="../css/cart-count.css" />
 </head>
 <body>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <a href="index.html" class="nav-logo">
-      <img src="../image/identity/logo.jpg" alt="O'Pays des Merveilles" />
-      <div class="nav-logo-text">O'Pays des<br>Merveilles</div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="boutique.html">Boutique</a></li>
-      <li><a href="about.html">À propos</a></li>
-      <li>
-        <a href="boutique.html" class="nav-cta">
-          Panier <span class="cart-count">0</span>
-        </a>
-      </li>
-    </ul>
-    <button class="nav-hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
+  <!-- Nav, footer, menu mobile injectés par components.js -->
 
   <!-- HERO -->
   <section class="hero">
@@ -47,7 +30,6 @@
       <div class="shape shape-2"></div>
       <div class="shape shape-3"></div>
     </div>
-
     <div class="hero-content">
       <div class="hero-text">
         <span class="hero-eyebrow">✦ Artisanat fait main</span>
@@ -57,12 +39,12 @@
           nées de mains en or
         </h1>
         <p class="hero-description">
-          Chaque pièce est façonnée avec soin, patience et passion. 
+          Chaque pièce est façonnée avec soin, patience et passion.
           Ici, l'ordinaire n'a pas sa place — bienvenue dans un pays de merveilles.
         </p>
         <div class="hero-actions">
           <a href="boutique.html" class="btn btn-primary">Découvrir la boutique →</a>
-          <a href="about.html" class="btn btn-outline">Mon histoire</a>
+          <a href="about.html"    class="btn btn-outline">Mon histoire</a>
         </div>
         <div class="hero-stats">
           <div class="stat">
@@ -76,12 +58,11 @@
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
-            <span class="stat-num">🌿</span>
-            <span class="stat-label">Matériaux naturels</span>
+            <span class="stat-num">Matériaux</span>
+            <span class="stat-label">Naturels</span>
           </div>
         </div>
       </div>
-
       <div class="hero-visual">
         <div class="hero-card-float">
           <div class="hero-img-wrap">
@@ -96,28 +77,28 @@
     </div>
   </section>
 
-  <!-- MANIFESTE / VALEURS -->
+  <!-- VALEURS -->
   <section class="valeurs">
     <div class="valeurs-inner">
       <div class="valeur-card reveal">
-        <div class="valeur-icon">🌱</div>
+        <div class="valeur-icon"></div>
         <h3>Naturel</h3>
         <p>Des matériaux choisis avec soin, proches de la nature et durables.</p>
       </div>
       <div class="valeur-card reveal">
-        <div class="valeur-icon">✋</div>
+        <div class="valeur-icon"></div>
         <h3>Artisanal</h3>
         <p>Chaque création passe entre mes mains, du début à la fin. Aucune machine ne peut remplacer ça.</p>
       </div>
       <div class="valeur-card reveal">
-        <div class="valeur-icon">💛</div>
+        <div class="valeur-icon"></div>
         <h3>Avec amour</h3>
         <p>Ce que vous recevez, c'est un bout de moi — fait avec passion et intention.</p>
       </div>
     </div>
   </section>
 
-  <!-- SÉLECTION COUP DE CŒUR — générée dynamiquement depuis products.js -->
+  <!-- SÉLECTION COUP DE CŒUR -->
   <section class="featured">
     <div class="featured-inner">
       <div class="featured-header reveal">
@@ -125,29 +106,25 @@
         <h2 class="section-title">Pièces phares</h2>
         <p class="section-subtitle">Un aperçu de ce qui vous attend dans la boutique — des trésors à s'offrir ou à offrir.</p>
       </div>
-
-      <!-- Les cartes sont injectées ici par le script ci-dessous -->
       <div class="featured-grid" id="featured-grid"></div>
-
       <div class="featured-cta reveal">
         <a href="boutique.html" class="btn btn-primary">Voir toute la collection →</a>
       </div>
     </div>
   </section>
 
-  <!-- BANDE TEXTE DÉFILANT -->
+  <!-- BANDEAU DÉFILANT -->
   <div class="ticker-wrap">
     <div class="ticker-track" id="tickerTrack"></div>
   </div>
 
-  <!-- SECTION HISTOIRE / PORTRAIT -->
+  <!-- PORTRAIT / HISTOIRE -->
   <section class="portrait">
     <div class="portrait-inner">
       <div class="portrait-visual reveal">
         <div class="portrait-img-wrap">
           <div class="portrait-img-placeholder">
-            <span>📸</span>
-            <p>Votre photo</p>
+            <p>Photo</p>
           </div>
           <div class="portrait-deco-circle"></div>
         </div>
@@ -155,7 +132,6 @@
           "Chaque point, chaque nœud,<br>chaque couleur — c'est ma façon<br>de mettre du beau dans le monde."
         </blockquote>
       </div>
-
       <div class="portrait-text reveal">
         <span class="section-eyebrow">Mon histoire</span>
         <h2 class="section-title">Bienvenue dans<br>mon univers</h2>
@@ -167,7 +143,7 @@
   </section>
 
   <!-- NEWSLETTER -->
-  <section class="newsletter">
+  <!--<section class="newsletter">
     <div class="newsletter-inner reveal">
       <span class="section-eyebrow">Restez connecté·e</span>
       <h2 class="section-title" style="color:white;">Rejoignez la communauté</h2>
@@ -177,59 +153,13 @@
         <button type="submit" class="btn btn-orange">Je m'inscris ✦</button>
       </form>
     </div>
-  </section>
+  </section>-->
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="../image/identity/logo.jpg" alt="O'Pays des Merveilles" />
-        <div class="nav-logo-text" style="color:var(--vert-menthe); margin-bottom:0.8rem; font-size:1.1rem;">O'Pays des Merveilles</div>
-        <p>Des créations artisanales faites main, avec passion et authenticité. Chaque pièce est unique, comme vous.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="boutique.html">Boutique</a></li>
-          <li><a href="about.html">À propos</a></li>
-          <li><a href="about.html#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Infos</h4>
-        <ul>
-          <li><a href="#">Livraison</a></li>
-          <li><a href="#">Retours</a></li>
-          <li><a href="#">Mentions légales</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2025 O'Pays des Merveilles — Des Mains en Or</span>
-      <span>Fait avec ❤️ en France</span>
-    </div>
-  </footer>
-
+  <!-- Ordre de chargement : products → components → main → mobile-menu → home -->
   <script src="../js/products.js"></script>
+  <script src="../js/components.js"></script>
   <script src="../js/main.js"></script>
-  <script src="../js/home.js"></script>
-
-    <!-- ===== MENU MOBILE ===== -->
-  <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
-    <div class="mobile-menu-panel">
-      <button class="mobile-menu-close" aria-label="Fermer le menu">&times;</button>
-      <nav class="mobile-menu-nav">
-        <a href="index.html">Accueil</a>
-        <a href="boutique.html">Boutique</a>
-        <a href="about.html">À propos</a>
-        <a href="about.html#contact">Contact</a>
-      </nav>
-      <a href="boutique.html" class="mobile-menu-cta">
-        Panier <span class="cart-count mobile-cart-count">0</span>
-      </a>
-    </div>
-  </div>
   <script src="../js/mobile-menu.js"></script>
+  <script src="../js/home.js"></script>
 </body>
 </html>

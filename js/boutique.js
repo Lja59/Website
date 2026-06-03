@@ -1,29 +1,21 @@
 /* ============================================================
-   BOUTIQUE.JS
+   BOUTIQUE.JS — O'Pays des Merveilles
    Génère les cartes depuis PRODUCTS (products.js).
    Gère les filtres, le tri, et délègue le panier à main.js.
+   Dépendances : products.js → components.js → main.js → boutique.js
    ============================================================ */
 
-
-/* === getCategoryLabel — définie localement pour fiabilité === */
-function getCategoryLabel(cat) {
-  const labels = { fleurs: 'Fleurs' };
-  return labels[cat] || cat;
-}
 document.addEventListener('DOMContentLoaded', () => {
   renderShopGrid();
 });
 
-
 /* ============================================================
    GÉNÉRATION DE LA GRILLE
    ============================================================ */
-
 function renderShopGrid() {
-  const grid = document.getElementById('products-grid');
+  const grid     = document.getElementById('products-grid');
   if (!grid) return;
 
-  // Attendre que PRODUCTS soit disponible (sécurité)
   const products = window.PRODUCTS;
   if (!products || Object.keys(products).length === 0) {
     grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--texte-leger);padding:4rem;">
@@ -36,46 +28,49 @@ function renderShopGrid() {
     .map(([id, product]) => buildCard(id, product))
     .join('');
 
-  // Enregistrer les nouvelles cartes dans l'observer reveal
+  /* Enregistrer les nouvelles cartes dans l'observer reveal */
   if (window.revealObserver) {
     grid.querySelectorAll('.reveal').forEach(el => window.revealObserver.observe(el));
   } else {
     grid.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
   }
 
-  // Cartes cliquables → page produit
+  /* Cartes cliquables → page produit */
   grid.querySelectorAll('.shop-card').forEach(card => {
-    card.addEventListener('click', (e) => {
+    card.addEventListener('click', e => {
       if (e.target.closest('button, a')) return;
       window.location.href = `produit.html?id=${card.dataset.id}`;
     });
   });
 
-  // Wishlist
+  /* Wishlist */
   grid.querySelectorAll('.wishlist-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', e => {
       e.stopPropagation();
       btn.classList.toggle('active');
       btn.textContent = btn.classList.contains('active') ? '♥' : '♡';
     });
   });
 
-  // Rétablir l'état panier depuis localStorage
+  /* Restaurer l'état panier */
   Object.keys(products).forEach(id => updateCardQtyUI(id));
 
-  // Mettre à jour le compteur affiché
+  /* Compteur */
   const countEl = document.getElementById('count');
   if (countEl) countEl.textContent = Object.keys(products).length;
 }
 
+/* ============================================================
+   CONSTRUCTION D'UNE CARTE PRODUIT
+   ============================================================ */
 function buildCard(id, product) {
-  const hasVariants = product.variants && product.variants.length > 0;
-
-  const firstImage = Array.isArray(product.images) && product.images.length > 0
-    ? product.images[0] : null;
+  const hasVariants = product.variants?.length > 0;
+  const firstImage  = Array.isArray(product.images) && product.images.length > 0
+    ? product.images[0]
+    : null;
 
   const imgHtml = firstImage
-    ? `<img src="${firstImage}" alt="${product.name}"
+    ? `<img src="${firstImage}" alt="${escHtml(product.name)}"
            style="width:100%;height:100%;object-fit:cover;display:block;"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
        <div class="product-img-placeholder" style="display:none;width:100%;height:100%;
@@ -90,12 +85,14 @@ function buildCard(id, product) {
        </div>`;
 
   const badgeStyle = product.badgeColor ? `style="background:${product.badgeColor};"` : '';
-  const badgeHtml = product.badge ? `<span class="product-badge" ${badgeStyle}>${product.badge}</span>` : '';
+  const badgeHtml  = product.badge
+    ? `<span class="product-badge" ${badgeStyle}>${escHtml(product.badge)}</span>`
+    : '';
 
   const stockClass = product.stock === 'in-stock' ? 'in-stock' : '';
   const stockLabel = product.stock === 'in-stock' ? 'En stock'
                    : product.stock === 'low'      ? 'Stock limité'
-                   : 'Sur commande';
+                   :                                'Sur commande';
 
   const actionBtn = hasVariants
     ? `<a href="produit.html?id=${id}" class="btn-card-options" onclick="event.stopPropagation()">
@@ -106,7 +103,7 @@ function buildCard(id, product) {
        </div>`;
 
   const variantHint = hasVariants
-    ? `<div class="product-variants-hint">${product.variants.map(v => v.label).join(' · ')}</div>`
+    ? `<div class="product-variants-hint">${product.variants.map(v => escHtml(v.label)).join(' · ')}</div>`
     : '';
 
   return `
@@ -121,11 +118,11 @@ function buildCard(id, product) {
       </div>
       <div class="product-info">
         <div class="product-meta">
-          <span class="tag">${getCategoryLabel(product.category)}</span>
+          <span class="tag">${escHtml(getCategoryLabel(product.category))}</span>
           <span class="product-stock ${stockClass}">${stockLabel}</span>
         </div>
-        <h3>${product.name}</h3>
-        <p class="product-desc">${product.description.substring(0, 75)}…</p>
+        <h3>${escHtml(product.name)}</h3>
+        <p class="product-desc">${escHtml(product.description.substring(0, 75))}…</p>
         ${variantHint}
         <div class="product-footer">
           <div class="product-price">${product.price} €</div>
@@ -135,15 +132,13 @@ function buildCard(id, product) {
     </article>`;
 }
 
-
 /* ============================================================
    AJOUT RAPIDE (produits SANS variante)
    ============================================================ */
-
 function quickAddToCart(productId) {
   const product = window.PRODUCTS?.[productId];
   if (!product) return;
-  if (product.variants && product.variants.length > 0) {
+  if (product.variants?.length > 0) {
     window.location.href = `produit.html?id=${productId}`;
     return;
   }
@@ -158,20 +153,15 @@ function updateCardQtyUI(id) {
   if (hasVariants) return;
 
   const cart      = getCart();
-  const cartItems = cart.filter(i => i.productId === id);
-  const totalQty  = cartItems.reduce((sum, i) => sum + i.qty, 0);
+  const totalQty  = cart.filter(i => i.productId === id).reduce((sum, i) => sum + i.qty, 0);
   const container = document.querySelector(`.quantity-control[data-id="${id}"]`);
   if (!container) return;
 
-  if (totalQty === 0) {
-    container.innerHTML = `
-      <button class="qty-btn add-mode" onclick="event.stopPropagation(); quickAddToCart('${id}')">+</button>`;
-  } else {
-    container.innerHTML = `
-      <button class="qty-btn active-mode" onclick="event.stopPropagation(); directChangeQty('${id}', -1)">−</button>
-      <span class="qty-num">${totalQty}</span>
-      <button class="qty-btn active-mode" onclick="event.stopPropagation(); directChangeQty('${id}', +1)">+</button>`;
-  }
+  container.innerHTML = totalQty === 0
+    ? `<button class="qty-btn add-mode" onclick="event.stopPropagation(); quickAddToCart('${id}')">+</button>`
+    : `<button class="qty-btn active-mode" onclick="event.stopPropagation(); directChangeQty('${id}', -1)">−</button>
+       <span class="qty-num">${totalQty}</span>
+       <button class="qty-btn active-mode" onclick="event.stopPropagation(); directChangeQty('${id}', +1)">+</button>`;
 }
 
 function directChangeQty(id, delta) {
@@ -185,16 +175,14 @@ function directChangeQty(id, delta) {
     item.qty += delta;
     if (item.qty <= 0) cart.splice(cart.indexOf(item), 1);
     saveCart(cart);
-    if (delta > 0) showToast(`"${window.PRODUCTS[id]?.name}" ajouté au panier 🌿`);
+    if (delta > 0) showToast(`"${escHtml(window.PRODUCTS[id]?.name)}" ajouté au panier 🌿`);
   }
   updateCardQtyUI(id);
 }
 
-
 /* ============================================================
    FILTRES
    ============================================================ */
-
 function filterProducts(category, btn) {
   document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
   btn.classList.add('active');
@@ -204,14 +192,13 @@ function filterProducts(category, btn) {
     card.classList.toggle('hidden', !match);
     if (match) count++;
   });
-  document.getElementById('count').textContent = count;
+  const countEl = document.getElementById('count');
+  if (countEl) countEl.textContent = count;
 }
-
 
 /* ============================================================
    TRI
    ============================================================ */
-
 function sortProducts(value) {
   const grid  = document.getElementById('products-grid');
   const cards = Array.from(grid.querySelectorAll('.shop-card'));
@@ -225,3 +212,5 @@ function sortProducts(value) {
   cards.forEach(card => grid.appendChild(card));
 }
 
+/* Exports */
+Object.assign(window, { filterProducts, sortProducts, quickAddToCart, directChangeQty });

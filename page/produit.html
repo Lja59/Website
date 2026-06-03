@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produit — O'Pays des Merveilles</title>
+  <meta name="description" content="Détail d'une création artisanale faite main d'O'Pays des Merveilles." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="../image/identity/logo.jpg" type="image/jpeg" />
+
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Produit — O'Pays des Merveilles" />
+  <meta property="og:description" content="Créations artisanales faites main avec amour." />
+  <meta property="og:image"       content="https://opaysdesmerveilles.fr/image/identity/logo.jpg" />
+
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/produit.css" />
+</head>
+<body>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Accueil</a>
+      <span>›</span>
+      <a href="boutique.html">Boutique</a>
+      <span>›</span>
+      <span id="breadcrumb-name">Chargement…</span>
+    </div>
+  </div>
+
+  <!-- PRODUIT PRINCIPAL -->
+  <section class="product-detail">
+    <div class="product-detail-inner">
+
+      <!-- GALERIE -->
+      <div class="gallery">
+        <div class="gallery-thumbs-col" id="gallery-thumbs"></div>
+        <div class="gallery-main-wrap">
+          <div class="gallery-main" id="gallery-main">
+            <div class="gallery-placeholder" id="gallery-placeholder">
+              <span id="gallery-icon"></span>
+              <p class="gallery-placeholder-hint">Photo bientôt disponible</p>
+            </div>
+            <img id="gallery-img" src="" alt=""
+                 style="display:none; width:100%; height:100%; object-fit:cover; transition:opacity 0.25s;" />
+            <button class="gallery-arrow gallery-prev" onclick="galleryNav(-1)" aria-label="Photo précédente">‹</button>
+            <button class="gallery-arrow gallery-next" onclick="galleryNav(+1)"  aria-label="Photo suivante">›</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANNEAU INFO -->
+      <div class="product-info-panel">
+        <div class="product-tags-row" id="product-tags-row"></div>
+        <h1 class="product-name" id="product-name">Chargement…</h1>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-text">Fait main avec amour</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price-big" id="product-price">—</span>
+          <span class="product-price-note">Prix unique · pièce artisanale</span>
+        </div>
+        <p class="product-description" id="product-description">—</p>
+
+        <!-- Variantes injectées par produit.js avant .add-to-cart-row -->
+
+        <div class="add-to-cart-row">
+          <div class="qty-selector">
+            <button onclick="changeQtyDisplay(-1)" aria-label="Moins">−</button>
+            <span id="qty-display">1</span>
+            <button onclick="changeQtyDisplay(+1)" aria-label="Plus">+</button>
+          </div>
+          <button class="btn btn-orange add-main-btn" onclick="addCurrentToCart()">
+            🛒 Ajouter au panier
+          </button>
+        </div>
+
+        <p class="product-stock-note" id="stock-note"></p>
+        <div class="product-highlights" id="product-highlights"></div>
+
+        <div class="shipping-info">
+          <div class="shipping-item">
+            <span>📦</span>
+            <div>
+              <strong>Expédition sous 2–3 jours</strong>
+              <p>Emballage artisanal soigné avec petit mot personnalisé</p>
+            </div>
+          </div>
+          <div class="shipping-item">
+            <span>🚚</span>
+            <div>
+              <strong>Livraison gratuite dès 50 €</strong>
+              <p>France, Belgique, Suisse, Luxembourg</p>
+            </div>
+          </div>
+          <div class="shipping-item">
+            <span>✉️</span>
+            <div>
+              <strong>Commande sur mesure</strong>
+              <p>Une idée ? <a href="about.html#contact">Contactez-moi</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONGLETS -->
+  <section class="product-tabs">
+    <div class="product-tabs-inner">
+      <div class="tabs-nav">
+        <button class="tab-btn active" onclick="switchTab('details', this)">Détails</button>
+        <button class="tab-btn"        onclick="switchTab('materiaux', this)">Matériaux</button>
+        <button class="tab-btn"        onclick="switchTab('entretien', this)">Entretien</button>
+      </div>
+      <div class="tabs-content">
+        <div class="tab-panel active" id="tab-details">  <p id="tab-details-text">—</p>   </div>
+        <div class="tab-panel"        id="tab-materiaux"><p id="tab-materiaux-text">—</p></div>
+        <div class="tab-panel"        id="tab-entretien"><p id="tab-entretien-text">—</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUITS SIMILAIRES -->
+  <section class="related-products">
+    <div class="related-inner">
+      <span class="section-eyebrow">Vous aimerez aussi</span>
+      <h2 class="section-title">Dans la même collection</h2>
+      <div class="related-grid" id="related-grid"></div>
+    </div>
+  </section>
+
+  <!-- Ordre : products → components (nav + footer + cart sidebar) → main → mobile-menu → produit -->
+  <script src="../js/products.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+  <script src="../js/produit.js"></script>
+</body>
+</html>

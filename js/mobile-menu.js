@@ -1,66 +1,56 @@
+/* ============================================================
+   MOBILE-MENU.JS — O'Pays des Merveilles
+   Gère l'ouverture/fermeture du menu mobile.
+   Dépendance : components.js (injecte #mobileMenuOverlay).
+   ============================================================ */
 
-/* =============================================================
-   MENU MOBILE — hamburger, overlay, fermeture
-   ============================================================= */
-(function () {
+document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.nav-hamburger');
   const overlay   = document.getElementById('mobileMenuOverlay');
-  const panel     = overlay?.querySelector('.mobile-menu-panel');
   const closeBtn  = overlay?.querySelector('.mobile-menu-close');
+  const panel     = overlay?.querySelector('.mobile-menu-panel');
+
   if (!hamburger || !overlay) return;
 
-  // Marquer le lien actif dans le menu mobile
-  const mobileLinks = overlay.querySelectorAll('.mobile-menu-nav a');
-  const path = window.location.pathname.split('/').pop() || 'index.html';
-  mobileLinks.forEach(a => {
-    if (a.getAttribute('href') === path) a.classList.add('active');
+  /* --- Ouvrir --- */
+  hamburger.addEventListener('click', openMobileMenu);
+
+  /* --- Fermer via bouton × --- */
+  closeBtn?.addEventListener('click', closeMobileMenu);
+
+  /* --- Fermer via clic sur l'overlay (hors panel) --- */
+  overlay.addEventListener('click', e => {
+    if (!panel?.contains(e.target)) closeMobileMenu();
   });
 
-  function openMenu() {
-    overlay.classList.add('open');
-    overlay.setAttribute('aria-hidden', 'false');
-    hamburger.classList.add('open');
-    hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    overlay.classList.remove('open');
-    overlay.setAttribute('aria-hidden', 'true');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  hamburger.addEventListener('click', openMenu);
-  closeBtn?.addEventListener('click', closeMenu);
-
-  // Clic sur l'overlay (hors panel) → fermer
-  overlay.addEventListener('click', (e) => {
-    if (!panel?.contains(e.target)) closeMenu();
+  /* --- Fermer via Escape --- */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMobileMenu();
   });
+});
 
-  // Touche Échap
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
-  });
+function openMobileMenu() {
+  const hamburger = document.querySelector('.nav-hamburger');
+  const overlay   = document.getElementById('mobileMenuOverlay');
+  if (!overlay) return;
 
-  // Sync compteur panier dans le menu mobile
-  function syncMobileCartCount() {
-    const mainCount  = document.querySelector('.nav-links .cart-count');
-    const mobileCount = overlay.querySelector('.mobile-cart-count');
-    if (mainCount && mobileCount) {
-      mobileCount.textContent = mainCount.textContent;
-      mobileCount.style.display = mainCount.style.display;
-    }
-  }
+  hamburger?.classList.add('open');
+  hamburger?.setAttribute('aria-expanded', 'true');
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
 
-  // Observer les mutations du badge principal pour refléter dans le menu mobile
-  const mainBadge = document.querySelector('.nav-links .cart-count');
-  if (mainBadge && window.MutationObserver) {
-    new MutationObserver(syncMobileCartCount).observe(mainBadge, {
-      childList: true, characterData: true, subtree: true, attributes: true
-    });
-  }
-  syncMobileCartCount();
-})();
+function closeMobileMenu() {
+  const hamburger = document.querySelector('.nav-hamburger');
+  const overlay   = document.getElementById('mobileMenuOverlay');
+  if (!overlay) return;
+
+  hamburger?.classList.remove('open');
+  hamburger?.setAttribute('aria-expanded', 'false');
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+window.closeMobileMenu = closeMobileMenu;

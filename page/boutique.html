@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique — O'Pays des Merveilles</title>
+  <meta name="description" content="Découvrez toutes les créations artisanales faites main d'O'Pays des Merveilles. Pièces uniques à s'offrir ou à offrir." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://opaysdesmerveilles.fr/page/boutique.html" />
+  <link rel="icon" href="../image/identity/logo.jpg" type="image/jpeg" />
+
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Boutique — O'Pays des Merveilles" />
+  <meta property="og:description" content="Découvrez toutes les créations artisanales faites main. Pièces uniques à s'offrir ou à offrir." />
+  <meta property="og:url"         content="https://opaysdesmerveilles.fr/page/boutique.html" />
+  <meta property="og:image"       content="https://opaysdesmerveilles.fr/image/identity/logo.jpg" />
+
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/boutique.css" />
+</head>
+<body>
+
+  <!-- HERO BOUTIQUE -->
+  <header class="shop-hero">
+    <div class="shop-hero-inner">
+      <span class="section-eyebrow">Toutes mes créations</span>
+      <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 4rem);">La Boutique</h1>
+      <p class="section-subtitle">Chaque pièce est unique et faite à la main. Prenez le temps de les découvrir.</p>
+    </div>
+    <div class="shop-hero-deco">
+      <div class="deco-leaf deco-leaf-1">🌿</div>
+      <div class="deco-leaf deco-leaf-2">🌸</div>
+      <div class="deco-leaf deco-leaf-3">🍃</div>
+    </div>
+  </header>
+
+  <!-- FILTRES -->
+  <section class="filters-section">
+    <div class="filters-inner">
+      <div class="filters-row">
+        <div class="filter-chips">
+          <button class="chip active" onclick="filterProducts('tous', this)">Tout voir</button>
+          <button class="chip"        onclick="filterProducts('fleurs', this)">Fleurs</button>
+        </div>
+        <div class="filter-sort">
+          <select onchange="sortProducts(this.value)">
+            <option value="default">Trier par</option>
+            <option value="prix-asc">Prix croissant</option>
+            <option value="prix-desc">Prix décroissant</option>
+          </select>
+        </div>
+      </div>
+      <div class="results-count">
+        <span id="count">—</span> créations
+      </div>
+    </div>
+  </section>
+
+  <!-- GRILLE PRODUITS -->
+  <section class="shop-grid-section">
+    <div class="shop-grid" id="products-grid"></div>
+  </section>
+
+  <!-- Ordre : products → components (injecte nav + footer + cart sidebar) → main → mobile-menu → boutique -->
+  <script src="../js/products.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+  <script src="../js/boutique.js"></script>
+</body>
+</html>

@@ -30,3 +30,5 @@ function handleContact(e) {
         arrow.textContent = '−';
       }
     }
+window.handleContact = handleContact;
+window.toggleFaq = toggleFaq;
